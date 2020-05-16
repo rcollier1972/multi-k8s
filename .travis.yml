@@ -12,7 +12,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project marine-pillar-277222
   - gcloud config set compute/zone us-east1-c
-  - gcloud container clusters get-credentials multi-cluster
+  - gcloud container clusters get-credentials mulit-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker built -t rcollier1972/docker-react -f ./client/Dockerfile.dev ./client
 script:
