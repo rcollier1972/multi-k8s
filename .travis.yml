@@ -1,6 +1,7 @@
 env:
   global:
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    - SHA=$(git rev-parse HEAD)
 sudo: required
 services:
   - docker
@@ -17,3 +18,8 @@ before_install:
   - docker build -t rcollier1972/docker-react -f ./client/Dockerfile.dev ./client
 script:
         - docker run -e CI=true rcollier1972/docker-react npm run test
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
